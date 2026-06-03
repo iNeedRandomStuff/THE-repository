@@ -46,7 +46,6 @@ public class GrabInteractable : NetworkBehaviour
     {
         if (collider.tag == "Interactable" && hasObjectInHand == false)
         {
-            print(collider.name);
             interactableScript = collider.gameObject.GetComponent<Interactable>();
 
             if (interactableScript.ownerName != gameObject.transform.name)
@@ -110,6 +109,10 @@ public class GrabInteractable : NetworkBehaviour
                 InteractableObject.transform.rotation = AttachPoint.transform.rotation;
                 interactableScript.ownerName = gameObject.transform.name;
                 hasObjectInHand = true;
+                if(pistol != null)
+                {
+                    pistol.Hand = gameObject;
+                }
             }
             
             if(interactableStationary == true)

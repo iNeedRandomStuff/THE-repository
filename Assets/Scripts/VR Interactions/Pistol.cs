@@ -33,6 +33,13 @@ public class Pistol : NetworkBehaviour
     public float distance;
     [SerializeField] private LineRenderer lr;
 
+    [Header("recoil")]
+    public GameObject Hand;
+    [SerializeField] private float sway;
+    [SerializeField] private float recoilX;
+    [SerializeField] private float recoilY;
+    [SerializeField] private float smoothnes;
+
     void Start()
     {
         currentAmmoInMag = magCapacity;
@@ -54,15 +61,27 @@ public class Pistol : NetworkBehaviour
             }
             else
             {
-                Debug.Log(hit.transform.name);
+
             }
+
 
             currentAmmoInMag -= 1f;
             string _ammoInMag = currentAmmoInMag.ToString();
             currentAmmoInMagDisplay3D.text = _ammoInMag;
             //currentAmmoInMagDisplayUI.text = _ammoInMag;
             PlayGunshotServerRpc(Impact, hitPoint, hitNormal);
+            RecoilAndSway(Hand);
         }
+    }
+
+    void RecoilAndSway(GameObject _Hand)
+    {
+        float randomnessFactor = Random.Range(0.5f, 1f);
+        Quaternion currentRotation = Hand.transform.localRotation;
+        Quaternion topRecoilTransform = Quaternion.Euler(recoilX * -randomnessFactor, recoilY * randomnessFactor, 0f);
+        print("topRecoilTransform = " + topRecoilTransform);
+        print("currentRotation = " + currentRotation);
+        _Hand.transform.localRotation = Quaternion.Slerp(currentRotation, topRecoilTransform, smoothnes * Time.deltaTime);
     }
 
     void Update()

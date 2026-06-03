@@ -70,7 +70,6 @@ public class PCmovement : NetworkBehaviour
         float horizontalAngleAbberation = turnAngle * Input.GetAxis("Horizontal");
         Quaternion _offsetRotation = Quaternion.Euler(0, horizontalAngleAbberation, 0);
         Vector3 forward = _offsetRotation * player.forward;
-        print(Vector3.forward.y);
         Vector3 right = player.TransformDirection(Vector3.right);
 
         if (canMove == true)

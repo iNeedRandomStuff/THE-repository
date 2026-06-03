@@ -37,12 +37,10 @@ public class Voice : NetworkBehaviour
 
         if (IsOwner)
         {
-            print("is owner");
             if (Microphone.devices.Length > 0)
             {
                 micName = Microphone.devices[0];
                 recording = Microphone.Start(micName, true, 1, sampleRate);
-                print("using mic: " + micName);
             }
             else
             {

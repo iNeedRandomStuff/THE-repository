@@ -5,7 +5,7 @@ using UnityEngine;
 public class IKFeetVR : MonoBehaviour
 {
     //I labeld what I could, but this script still confuses and frightens me. Touch as little as possible for now. its also probably full of useless checks and stuff, coz of how many itereations it wnet through.
-    // probably should clean up it later and move it all into different functions
+    //probably should clean up it later and move it all into different functions
 
     [Header("main IK")]
     //[SerializeField] private float footSpacing;
@@ -73,7 +73,7 @@ public class IKFeetVR : MonoBehaviour
 
         transform.position = currentPosition + Vector3.up * footYOffset;
     }
-
+    
     private void StepOrIdleStep()
     {
         Vector3 footDirectionOffset = idle ? Vector3.zero : (moveDirection * stepDistance);

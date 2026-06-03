@@ -6016,6 +6016,11 @@ MonoBehaviour:
   Impact: {fileID: 3792505909900992708, guid: 8b29eb52e0610ca41be9918688dd03c4, type: 3}
   distance: 0
   lr: {fileID: 8859377795764459698}
+  Hand: {fileID: 8093881618462503928}
+  sway: 1
+  recoilX: 50
+  recoilY: 25
+  smoothnes: 100
 --- !u!82 &431137167874013927
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8948,7 +8953,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7073157040248070774}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a2a9c34df4095f47b9ca8f975175f5b, type: 3}
   m_Name: 
