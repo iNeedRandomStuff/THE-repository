@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\bovbe\\Desktop\\repositoriy\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{104DB6F7-D3E9-63EF-38E6-5409C70878D8}|Assembly-CSharp.csproj|c:\\users\\bovbe\\desktop\\repositoriy\\assets\\scripts\\pc\\arrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{104DB6F7-D3E9-63EF-38E6-5409C70878D8}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pc\\arrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Arrow.cs",
+              "DocumentMoniker": "C:\\Users\\bovbe\\Desktop\\repositoriy\\Assets\\Scripts\\PC\\Arrow.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PC\\Arrow.cs",
+              "ToolTip": "C:\\Users\\bovbe\\Desktop\\repositoriy\\Assets\\Scripts\\PC\\Arrow.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PC\\Arrow.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-22T19:24:19.113Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
