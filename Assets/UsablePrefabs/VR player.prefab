@@ -1847,6 +1847,7 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 1846
+  sway: {x: 0, y: 0, z: 0}
 --- !u!1 &1311498295934904885
 GameObject:
   m_ObjectHideFlags: 0
@@ -4814,6 +4815,7 @@ MonoBehaviour:
   Controller: {fileID: 1031709911632887836}
   isOwner: 0
   netHand: {fileID: 7699176209309803290}
+  swayRange: 0.05
 --- !u!54 &9163184895900165900
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6017,10 +6019,12 @@ MonoBehaviour:
   distance: 0
   lr: {fileID: 8859377795764459698}
   Hand: {fileID: 8093881618462503928}
-  sway: 1
   recoilX: 50
   recoilY: 25
   smoothnes: 100
+  swayRange: 0.5
+  swayWait: 5
+  XROrigin: {fileID: 1096221574328103634}
 --- !u!82 &431137167874013927
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7587,6 +7591,7 @@ MonoBehaviour:
   Controller: {fileID: 3668800683748092492}
   isOwner: 0
   netHand: {fileID: 7766170024630833905}
+  swayRange: 0.05
 --- !u!54 &6473565084981611190
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -33,16 +33,22 @@ public class Pistol : NetworkBehaviour
     public float distance;
     [SerializeField] private LineRenderer lr;
 
-    [Header("recoil")]
+    [Header("recoil and sway")]
     public GameObject Hand;
-    [SerializeField] private float sway;
     [SerializeField] private float recoilX;
     [SerializeField] private float recoilY;
     [SerializeField] private float smoothnes;
+    [SerializeField] private float swayRange;
+    [SerializeField] private float swayWait;
+    [SerializeField] private GameObject XROrigin;
+    private Vector3 swayVector3;
+    private PcVrCompatability compatabilityScript;
 
     void Start()
     {
         currentAmmoInMag = magCapacity;
+        compatabilityScript = XROrigin.GetComponent<PcVrCompatability>();
+        InvokeRepeating(nameof(randomSwayPerSec), 0f , swayWait);
     }
 
     public void Function()
@@ -70,22 +76,30 @@ public class Pistol : NetworkBehaviour
             currentAmmoInMagDisplay3D.text = _ammoInMag;
             //currentAmmoInMagDisplayUI.text = _ammoInMag;
             PlayGunshotServerRpc(Impact, hitPoint, hitNormal);
-            RecoilAndSway(Hand);
+            Recoil(Hand);
         }
     }
 
-    void RecoilAndSway(GameObject _Hand)
+    void randomSwayPerSec()
+    {
+        //yield return new WaitForSeconds(swayWait);
+        float randomnessFactor = Random.Range(-swayRange, swayRange);
+        swayVector3 = new Vector3(randomnessFactor, randomnessFactor, 0f);
+        Debug.Log(swayVector3);
+        compatabilityScript.sway = swayVector3;
+    }
+
+    void Recoil(GameObject _Hand)
     {
         float randomnessFactor = Random.Range(0.5f, 1f);
         Quaternion currentRotation = Hand.transform.localRotation;
         Quaternion topRecoilTransform = Quaternion.Euler(recoilX * -randomnessFactor, recoilY * randomnessFactor, 0f);
-        print("topRecoilTransform = " + topRecoilTransform);
-        print("currentRotation = " + currentRotation);
-        _Hand.transform.localRotation = Quaternion.Slerp(currentRotation, topRecoilTransform, smoothnes * Time.deltaTime);
+        _Hand.transform.localRotation = Quaternion.Slerp(currentRotation, topRecoilTransform, smoothnes * Time.deltaTime) * currentRotation;
     }
 
     void Update()
     {
+        //StartCoroutine(randomSwayPerSec());
         Ray ray = new Ray(gunBarrel.position, gunBarrel.forward);
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit))
