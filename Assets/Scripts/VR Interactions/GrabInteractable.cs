@@ -107,7 +107,6 @@ public class GrabInteractable : NetworkBehaviour
             {
                 InteractableObject.transform.position = AttachPoint.transform.position;
                 InteractableObject.transform.rotation = AttachPoint.transform.rotation;
-                InteractableObject.transform.SetParent(gameObject.transform);
                 interactableScript.ownerName = gameObject.transform.name;
                 hasObjectInHand = true;
                 if(pistol != null)
@@ -139,7 +138,6 @@ public class GrabInteractable : NetworkBehaviour
             {
                 InteractableObject.transform.position = Holster.transform.position;
                 InteractableObject.transform.rotation = Holster.transform.rotation;
-                InteractableObject.transform.SetParent(Holster);
                 interactableScript.ownerName = null;
                 Holster = null;
                 InteractableObject = null;

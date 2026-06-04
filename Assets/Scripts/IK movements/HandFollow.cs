@@ -10,7 +10,6 @@ public class HandFollow : NetworkBehaviour
     private Rigidbody rigidBody;
 
     [SerializeField] private GameObject netHand;
-    [SerializeField] private float swayRange;
 
     public override void OnStartClient()
     {
@@ -32,7 +31,7 @@ public class HandFollow : NetworkBehaviour
         isOwner = true;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (IsOwner)
         {
@@ -42,7 +41,6 @@ public class HandFollow : NetworkBehaviour
 
     void physycsFollow()
     {
-        //float randomSway = Random.Range(-swayRange, swayRange);
         rigidBody.velocity = (Controller.position - transform.position) / Time.fixedDeltaTime;
 
         Quaternion rotationDifference = Controller.rotation * Quaternion.Inverse(transform.rotation);

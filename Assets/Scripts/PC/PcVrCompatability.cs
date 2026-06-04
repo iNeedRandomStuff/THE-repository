@@ -35,8 +35,6 @@ public class PcVrCompatability : NetworkBehaviour
     [SerializeField] private LayerMask ignoreLayer;
     private Levers levers;
 
-    [HideInInspector] public Vector3 sway;
-
 
     void Update()
     {
@@ -99,7 +97,7 @@ public class PcVrCompatability : NetworkBehaviour
         if (grabInteractableScriptRight.InteractableObject != null)
         {
             rightController.position = Vector3.MoveTowards(rightController.position, defaultPistolPos.position, _step);
-            rightController.LookAt(hitPoint + sway);
+            rightController.LookAt(hitPoint);
         }
         else
         {
