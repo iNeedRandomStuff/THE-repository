@@ -41,14 +41,20 @@ public class Pistol : NetworkBehaviour
     [SerializeField] private float swayRange;
     [SerializeField] private float swayWait;
     [SerializeField] private GameObject XROrigin;
+    [SerializeField] private float timeToCenter;
     private Vector3 swayVector3;
     private PcVrCompatability compatabilityScript;
+    private HandFollow handFollowScript;
+    //private Quaternion prevRecoilValue = Quaternion.Euler(1, 1, 1);
+    private Quaternion topRecoilTransform;
 
     void Start()
     {
         currentAmmoInMag = magCapacity;
         compatabilityScript = XROrigin.GetComponent<PcVrCompatability>();
+        handFollowScript = Hand.GetComponent<HandFollow>();
         InvokeRepeating(nameof(randomSwayPerSec), 0f , swayWait);
+        handFollowScript.timeToReset = timeToCenter;
     }
 
     public void Function()
@@ -74,7 +80,6 @@ public class Pistol : NetworkBehaviour
             currentAmmoInMag -= 1f;
             string _ammoInMag = currentAmmoInMag.ToString();
             currentAmmoInMagDisplay3D.text = _ammoInMag;
-            //currentAmmoInMagDisplayUI.text = _ammoInMag;
             PlayGunshotServerRpc(Impact, hitPoint, hitNormal);
             Recoil(Hand);
         }
@@ -82,24 +87,21 @@ public class Pistol : NetworkBehaviour
 
     void randomSwayPerSec()
     {
-        //yield return new WaitForSeconds(swayWait);
         float randomnessFactor = Random.Range(-swayRange, swayRange);
         swayVector3 = new Vector3(randomnessFactor, randomnessFactor, 0f);
-        Debug.Log(swayVector3);
         compatabilityScript.sway = swayVector3;
     }
 
     void Recoil(GameObject _Hand)
     {
         float randomnessFactor = Random.Range(0.5f, 1f);
-        Quaternion currentRotation = Hand.transform.localRotation;
-        Quaternion topRecoilTransform = Quaternion.Euler(recoilX * -randomnessFactor, recoilY * randomnessFactor, 0f);
-        _Hand.transform.localRotation = Quaternion.Slerp(currentRotation, topRecoilTransform, smoothnes * Time.deltaTime) * currentRotation;
+        topRecoilTransform = Quaternion.Euler(recoilX * -randomnessFactor, recoilY * randomnessFactor, 0f);
+        handFollowScript.offset = topRecoilTransform;
+        handFollowScript.time = 0f;
     }
 
     void Update()
     {
-        //StartCoroutine(randomSwayPerSec());
         Ray ray = new Ray(gunBarrel.position, gunBarrel.forward);
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit))
