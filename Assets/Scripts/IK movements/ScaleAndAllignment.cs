@@ -25,6 +25,9 @@ public class ScaleAndAllignment : NetworkBehaviour
     public GameObject RightArm;
     public GameObject Head;
 
+    Vector3 previousPosition;
+    Vector3 movementDirection;
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -67,6 +70,7 @@ public class ScaleAndAllignment : NetworkBehaviour
         {
             body.rotation = Quaternion.Slerp(body.rotation, _targetRot, Time.deltaTime * rotationSpeed);
         }
+
     }
 
     void CharachterCalibration()

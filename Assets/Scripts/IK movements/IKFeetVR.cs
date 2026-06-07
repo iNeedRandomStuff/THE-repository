@@ -70,7 +70,6 @@ public class IKFeetVR : MonoBehaviour
         }
 
         speed = currentSpeedMagnitude + 2f * speedMultiplier;
-
         transform.position = currentPosition + Vector3.up * footYOffset;
     }
     
@@ -78,6 +77,7 @@ public class IKFeetVR : MonoBehaviour
     {
         Vector3 footDirectionOffset = idle ? Vector3.zero : (moveDirection * stepDistance);
 
+        
         Vector3 rayOrigin = body.position + footDirectionOffset + (body.right * sideOffset);
         Ray ray = new Ray(rayOrigin, Vector3.down);
         if (Physics.Raycast(ray, out RaycastHit info, 5f, terrainLayer.value))
