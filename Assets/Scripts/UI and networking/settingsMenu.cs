@@ -17,8 +17,10 @@ public class settingsMenu : MonoBehaviour
     [SerializeField] private GameObject HostButton;
 
     [Header("Audio")]
+    [SerializeField] private AudioMixer playerMixer;
     [SerializeField] private AudioMixer masterMixer;
-    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioSource sfx;
+    [SerializeField] private AudioSource playa;
     [SerializeField] private AudioClip pop;
 
     [Header("net")]
@@ -52,7 +54,7 @@ public class settingsMenu : MonoBehaviour
 
         float dB = Mathf.Log10(_volume) * 20f;
         masterMixer.SetFloat("masterVolume", dB);
-        playSound(pop);
+        playSound(pop, sfx);
     }
 
     public void playerVolume(float _volume)
@@ -61,8 +63,8 @@ public class settingsMenu : MonoBehaviour
             _volume = 0.0001f;
 
         float dB = Mathf.Log10(_volume) * 20f;
-        masterMixer.SetFloat("masterVolume", dB);
-        playSound(pop);
+        playerMixer.SetFloat("masterVolume", dB);
+        playSound(pop, playa);
     }
 
     public void backToMainMenuFromGame()
@@ -83,11 +85,11 @@ public class settingsMenu : MonoBehaviour
         }
     }
 
-    void playSound(AudioClip _sound)
+    void playSound(AudioClip _sound, AudioSource _source)
     {
-        if(source.isPlaying == false)
+        if (_source.isPlaying == false)
         {
-            source.PlayOneShot(_sound);
+            _source.PlayOneShot(_sound);
         }
     }
 }

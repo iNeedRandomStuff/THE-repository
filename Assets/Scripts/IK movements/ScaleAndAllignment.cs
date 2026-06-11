@@ -28,6 +28,8 @@ public class ScaleAndAllignment : NetworkBehaviour
     Vector3 previousPosition;
     Vector3 movementDirection;
 
+    [SerializeField] private PCmovement PCmovementScript;
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -61,6 +63,8 @@ public class ScaleAndAllignment : NetworkBehaviour
     void RotateTheBody()
     {
         Vector3 _headForward = EmptyCamera.forward;
+
+        print("_headForward: " +  _headForward);
         _headForward.y = 0;
         _headForward.Normalize();
 
@@ -70,14 +74,14 @@ public class ScaleAndAllignment : NetworkBehaviour
         {
             body.rotation = Quaternion.Slerp(body.rotation, _targetRot, Time.deltaTime * rotationSpeed);
         }
-
     }
 
     void CharachterCalibration()
     {
         playerHeight = EmptyCamera.transform.localPosition.y;
-        float _scale = playerHeight / AvatarHeight * 0.7f; 
+        float _scale = playerHeight / AvatarHeight * 1f; 
         avatar.localScale = Vector3.one * _scale;
+        PCmovementScript.enabled = false;
         calibrationDone = true;
     }
 

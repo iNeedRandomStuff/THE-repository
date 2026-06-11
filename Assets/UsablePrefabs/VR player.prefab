@@ -7814,6 +7814,7 @@ MonoBehaviour:
   LeftArm: {fileID: 6015192364323934181}
   RightArm: {fileID: 8093881618462503928}
   Head: {fileID: 8959856453676366983}
+  PCmovementScript: {fileID: 8071241218843784106}
 --- !u!65 &1078710135499586392
 BoxCollider:
   m_ObjectHideFlags: 0
