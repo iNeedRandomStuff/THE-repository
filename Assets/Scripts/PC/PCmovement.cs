@@ -5,6 +5,7 @@ using UnityEngine;
 using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using UnityEngine.UI;
 
 public class PCmovement : NetworkBehaviour
 {
@@ -13,7 +14,7 @@ public class PCmovement : NetworkBehaviour
     [Header("Base setup")]
     public float walkingSpeed = 9f;
     public float gravity = 20.0f;
-    public float lookSpeed = 1.0f;
+    public float lookSpeed;
     public float lookXLimit = 45.0f;
     public Light light;
     public CharacterController characterController;
@@ -24,16 +25,17 @@ public class PCmovement : NetworkBehaviour
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0f;
 
-   [HideInInspector]
+    [HideInInspector]
     public bool canMove = true;
 
     [SerializeField] private GameObject playerCamera;
     [SerializeField] private Transform playerModel;
     [SerializeField] private GameObject Canvas;
+    [SerializeField] private Slider sensSlider;
 
     public void changeSensetivity(float sensetivity)
     {
-        lookSpeed = sensetivity * 1;
+        lookSpeed = sensetivity;
     }
 
     public override void OnStartClient()
@@ -67,6 +69,19 @@ public class PCmovement : NetworkBehaviour
 
     void Update()
     {
+        if (sensSlider != null)
+        {
+            sensSlider.onValueChanged.AddListener((v) => { lookSpeed = v; });
+        }
+        else
+        {
+            GameObject _slider = GameObject.FindGameObjectWithTag("mouseSensSlider");
+            if (_slider != null)
+            {
+                sensSlider = _slider.GetComponent<Slider>();
+            }
+        }
+
         float horizontalAngleAbberation = turnAngle * Input.GetAxis("Horizontal");
         Quaternion _offsetRotation = Quaternion.Euler(0, horizontalAngleAbberation, 0);
         Vector3 forward = _offsetRotation * player.forward;
@@ -98,12 +113,6 @@ public class PCmovement : NetworkBehaviour
 
             if (playerCamera != null)
             {
-                /*
-                rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
-                rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-                playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-                player.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
-                */
                 rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
                 rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
                 playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
