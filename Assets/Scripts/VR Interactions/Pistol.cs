@@ -47,6 +47,17 @@ public class Pistol : NetworkBehaviour
     private HandFollow handFollowScript;
     //private Quaternion prevRecoilValue = Quaternion.Euler(1, 1, 1);
     private Quaternion topRecoilTransform;
+    
+    private float additionalrecoilX;
+
+    private float additionalrecoilY;
+
+    private int timesinceshot = 0;
+
+    private float randomnessFactorX;
+    private float randomnessFactorY;
+
+    private int timesshot = 1;
 
     void Start()
     {
@@ -56,6 +67,12 @@ public class Pistol : NetworkBehaviour
         InvokeRepeating(nameof(randomSwayPerSec), 0f , swayWait);
         handFollowScript.timeToReset = timeToCenter;
     }
+
+    private void FixedUpdate()
+    {
+        timesinceshot = timesinceshot + 1; 
+    }
+
 
     public void Function()
     {
@@ -82,6 +99,7 @@ public class Pistol : NetworkBehaviour
             currentAmmoInMagDisplay3D.text = _ammoInMag;
             PlayGunshotServerRpc(Impact, hitPoint, hitNormal);
             Recoil(Hand);
+            timesinceshot = 0;
         }
     }
 
@@ -94,10 +112,30 @@ public class Pistol : NetworkBehaviour
 
     void Recoil(GameObject _Hand)
     {
-        float randomnessFactor = Random.Range(0.5f, 1f);
-        topRecoilTransform = Quaternion.Euler(recoilX * -randomnessFactor, recoilY * randomnessFactor, 0f);
-        handFollowScript.offset = topRecoilTransform;
-        handFollowScript.time = 0f;
+        if (timesinceshot <= 60)
+        {
+            randomnessFactorX = Random.Range(0.1f, 1f);
+            randomnessFactorY = Random.Range(0.1f, 1f);
+            topRecoilTransform = Quaternion.Euler(recoilX * -randomnessFactorX * timesshot, recoilY  +randomnessFactorY * (2 * timesshot), 0f);
+            handFollowScript.offset = topRecoilTransform;
+            handFollowScript.time = 0f;
+            timesshot = timesshot + 1;
+            if (timesshot > 5)
+            {
+                timesshot = 5;
+            }
+        }
+        else
+        {
+            randomnessFactorX = Random.Range(0.1f, 1f);
+            randomnessFactorY = Random.Range(0.1f, 1f);
+            topRecoilTransform = Quaternion.Euler(recoilX * -randomnessFactorX, recoilY  +randomnessFactorY, 0f);
+            handFollowScript.offset = topRecoilTransform;
+            handFollowScript.time = 0f;
+            timesshot = 1;
+        }
+            
+        
     }
 
     void Update()
