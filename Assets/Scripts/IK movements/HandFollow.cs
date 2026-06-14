@@ -46,7 +46,6 @@ public class HandFollow : NetworkBehaviour
 
     void physycsFollow()
     {
-        print(offset);
         rigidBody.velocity = (Controller.position - transform.position) / Time.fixedDeltaTime;
 
         Quaternion rotationDifference = Controller.rotation * offset * Quaternion.Inverse(transform.rotation);

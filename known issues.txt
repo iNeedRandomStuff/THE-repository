@@ -1,0 +1,6 @@
+Rest foot pos is incorrect in VR.
+on sudden change of direction lastSteppedFoot floats in the air until the other foot steps.
+hands jerk when walking
+player colume is setting doesnt do anything
+
+[check if mouse sensetivity works]
