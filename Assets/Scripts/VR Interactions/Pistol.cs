@@ -134,8 +134,6 @@ public class Pistol : NetworkBehaviour
             handFollowScript.time = 0f;
             timesshot = 1;
         }
-            
-        
     }
 
     void Update()
