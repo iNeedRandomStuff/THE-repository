@@ -4,5 +4,4 @@ hands jerk when walking
 player Volume is setting doesnt do anything
 pistol and flashlight sill stay holstered on the other players mashine even if they are not
 head of VR player stays in the air after death
-head of the PC player is a bit wrong
 make PC players collider encompass the entire body and not only the head
