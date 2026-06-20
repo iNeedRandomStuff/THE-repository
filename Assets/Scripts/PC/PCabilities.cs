@@ -71,28 +71,28 @@ public class PCabilities : NetworkBehaviour
                     head = scaleAndAllignment.Head;
                 }
                 canKill = false;
-                //KillCosmonautServer(hit.transform.gameObject, leftArm, rightArm, head);
-                KillCosmonautServer(hit.transform.gameObject);
+                KillCosmonautServer(hit.transform.gameObject, leftArm, rightArm, head);
+                //KillCosmonautServer(hit.transform.gameObject);
                 monsterHealth.ServerHealOnKill();
             }
         }
     }
 
     [ServerRpc]
-    //void KillCosmonautServer(GameObject _cosmonaut, GameObject _leftArm, GameObject _rightArm, GameObject _Head)
-    void KillCosmonautServer(GameObject _cosmonaut)
+    void KillCosmonautServer(GameObject _cosmonaut, GameObject _leftArm, GameObject _rightArm, GameObject _Head)
+    //void KillCosmonautServer(GameObject _cosmonaut)
     {
-        /*
+        
         NetworkObject.Despawn(_leftArm);
         NetworkObject.Despawn(_rightArm);
         NetworkObject.Despawn(_Head);
         NetworkObject.Despawn(_cosmonaut);
-        */
+        
         source.PlayOneShot(Crack);
         currentStalkTimerState = 0;
         canKill = false;
 
-        KillCosmonautObserver(_cosmonaut);
+        //KillCosmonautObserver(_cosmonaut);
 
         //killCooldownFunction();
     }
