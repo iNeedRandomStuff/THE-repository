@@ -33,10 +33,12 @@ public class PCmovement : NetworkBehaviour
     [SerializeField] private GameObject Canvas;
     [SerializeField] private Slider sensSlider;
 
+    /*
     public void changeSensetivity(float sensetivity)
     {
         lookSpeed = sensetivity;
     }
+    */
 
     public override void OnStartClient()
     {
@@ -69,6 +71,7 @@ public class PCmovement : NetworkBehaviour
 
     void Update()
     {
+        /*
         if (sensSlider != null)
         {
             sensSlider.onValueChanged.AddListener((v) => { lookSpeed = v; });
@@ -81,6 +84,8 @@ public class PCmovement : NetworkBehaviour
                 sensSlider = _slider.GetComponent<Slider>();
             }
         }
+        */
+        lookSpeed = GameManager.sensetivity;
 
         float horizontalAngleAbberation = turnAngle * Input.GetAxis("Horizontal");
         Quaternion _offsetRotation = Quaternion.Euler(0, horizontalAngleAbberation, 0);
