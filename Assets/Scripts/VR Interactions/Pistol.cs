@@ -114,15 +114,15 @@ public class Pistol : NetworkBehaviour
     {
         if (timesinceshot <= 60)
         {
-            randomnessFactorX = Random.Range(0.1f, 1f);
-            randomnessFactorY = Random.Range(0.1f, 1f);
+            randomnessFactorX = Random.Range(0.8f, 1f);
+            randomnessFactorY = Random.Range(0.8f, 1f);
             topRecoilTransform = Quaternion.Euler(recoilX * -randomnessFactorX * timesshot, recoilY  +randomnessFactorY * (2 * timesshot), 0f);
             handFollowScript.offset = topRecoilTransform;
             handFollowScript.time = 0f;
             timesshot = timesshot + 1;
-            if (timesshot > 5)
+            if (timesshot > 3)
             {
-                timesshot = 5;
+                timesshot = 3;
             }
         }
         else

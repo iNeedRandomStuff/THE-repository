@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\not mine\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\UI and networking\AllCosmonautsDead.cs" />
     <Compile Include="Assets\Scripts\PC\PCabilities.cs" />
+    <Compile Include="Assets\Scripts\UI and networking\mainMenuUIinteractor.cs" />
     <Compile Include="Assets\Scripts\UI and networking\CharacterSelector.cs" />
     <Compile Include="Assets\Scripts\UI and networking\settingsMenu.cs" />
     <Compile Include="Assets\Scripts\UI and networking\HostLobby.cs" />
