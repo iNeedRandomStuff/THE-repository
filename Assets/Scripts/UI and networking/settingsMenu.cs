@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using FishNet.Managing;
-using FishNet.Object;
-using FishNet;
 using TMPro;
 
 public class settingsMenu : MonoBehaviour
@@ -27,8 +25,7 @@ public class settingsMenu : MonoBehaviour
 
     [Header("net")]
     [SerializeField] private NetworkManager networkManager;
-    [SerializeField] private TMP_InputField ipInput;
-    [SerializeField] private ushort port;
+
 
     /*
     public void enableSettingMenu()
@@ -53,6 +50,11 @@ public class settingsMenu : MonoBehaviour
     }
     */
 
+    void Update()
+    {
+
+    }
+
     public void audioVolume(float _volume)
     {
         if (_volume < 0.0001f)
@@ -73,17 +75,6 @@ public class settingsMenu : MonoBehaviour
         playSound(pop, playa);
     }
 
-    public void connect()
-    {
-        GameManager.IP = ipInput.text;
-        string _ip = GameManager.IP;
-        if (string.IsNullOrEmpty(_ip))
-        {
-            print("string is null");
-            _ip = "localhost";
-        }
-        InstanceFinder.ClientManager.StartConnection(GameManager.IP, port);
-    }
 
     public void backToMainMenuFromGame()
     {
@@ -110,4 +101,6 @@ public class settingsMenu : MonoBehaviour
             _source.PlayOneShot(_sound);
         }
     }
+
+
 }

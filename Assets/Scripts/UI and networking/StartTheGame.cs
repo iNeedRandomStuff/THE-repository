@@ -1,11 +1,10 @@
-using FishNet.Object.Synchronizing;
 using FishNet;
-using FishNet.Object;
-using FishNet.Connection;
+using FishNet.Managing.Scened;
 using UnityEngine;
 
-public class StartTheGame : NetworkBehaviour
+public class StartTheGame : MonoBehaviour
 {
+    /*
     [Header ("prefabs")]
     public GameObject vr;
     public GameObject pc;
@@ -97,5 +96,20 @@ public class StartTheGame : NetworkBehaviour
     {
         menuButtons.SetActive(true);
         mainMenu.SetActive(false);
+    }
+    */
+
+    void Awake()
+    {
+        if (!InstanceFinder.IsServerStarted)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void switchScene()
+    {
+        SceneLoadData sld = new SceneLoadData("gameplay_scene");
+        InstanceFinder.SceneManager.LoadGlobalScenes(sld);
     }
 }
