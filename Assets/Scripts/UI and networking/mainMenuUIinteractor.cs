@@ -34,6 +34,7 @@ public class mainMenuUIinteractor : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         lr.positionCount = 2;
+        GameManager.RegisterPlayer(this);
     }
 
     void Update()

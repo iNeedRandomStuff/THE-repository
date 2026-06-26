@@ -11,7 +11,7 @@ public class LanConnector : MonoBehaviour
 
     public void StartClient()
     {
-        string _ip = ipInput.text;
+        string _ip = GameManager.IP;
         if (string.IsNullOrEmpty(_ip))
         {
             print("string is null");

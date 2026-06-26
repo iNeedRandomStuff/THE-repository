@@ -1,11 +1,21 @@
+using FishNet.Object.Synchronizing;
 using FishNet;
-using FishNet.Managing.Scened;
+using FishNet.Object;
+using FishNet.Connection;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
-public class StartTheGame : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
-    /*
-    [Header ("prefabs")]
+    public static string IP;
+    public static float sensetivity;
+    public static float playerVoice;
+    public static float SFX;
+
+    public static List<mainMenuUIinteractor> m_Players = new List<mainMenuUIinteractor>();
+
+    [Header("prefabs")]
     public GameObject vr;
     public GameObject pc;
     public GameObject PcAstronautTestAgent;
@@ -14,18 +24,23 @@ public class StartTheGame : MonoBehaviour
     [SerializeField] private Transform vrSpawn;
     [SerializeField] private Transform pcSpawn;
 
-    [Header ("UI")]
-    [SerializeField] private GameObject mainMenu;
-    [SerializeField] private GameObject menuButtons;
-    [SerializeField] private GameObject cosmonautsWon;
-    [SerializeField] private GameObject monsterWon;
+    [Header ("settings")]
+    [SerializeField] private bool spawnPlayers;
 
-    public void StartGameButton()
+    void Start()
     {
         if (!InstanceFinder.IsServerStarted)
             return;
 
-        StartGameServer();
+        if (spawnPlayers == true)
+        {
+            StartGameServer();
+        }
+    }
+
+    public static void RegisterPlayer(mainMenuUIinteractor player)
+    {
+        m_Players.Add(player);
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -42,7 +57,6 @@ public class StartTheGame : MonoBehaviour
                 return;
         }
 
-        HideMainMenuObservers();
         SpawnPlayers();
     }
 
@@ -61,7 +75,7 @@ public class StartTheGame : MonoBehaviour
             }
             else
             {
-                if(characterSelector.SelectedCharacter.Value == 2)
+                if (characterSelector.SelectedCharacter.Value == 2)
                 {
                     _prefab = pc;
                 }
@@ -89,27 +103,5 @@ public class StartTheGame : MonoBehaviour
             GameObject _player = Instantiate(_prefab, _spawnPoint.position, _spawnPoint.rotation);
             ServerManager.Spawn(_player, conn);
         }
-    }
-
-    [ObserversRpc]
-    private void HideMainMenuObservers()
-    {
-        menuButtons.SetActive(true);
-        mainMenu.SetActive(false);
-    }
-    */
-
-    void Awake()
-    {
-        if (!InstanceFinder.IsServerStarted)
-        {
-            gameObject.SetActive(false);
-        }
-    }
-
-    public void switchScene()
-    {
-        SceneLoadData sld = new SceneLoadData("gameplay_scene");
-        InstanceFinder.SceneManager.LoadGlobalScenes(sld);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using FishNet.Managing;
-using FishNet.Object;
+using TMPro;
 
 public class settingsMenu : MonoBehaviour
 {
@@ -26,6 +26,8 @@ public class settingsMenu : MonoBehaviour
     [Header("net")]
     [SerializeField] private NetworkManager networkManager;
 
+
+    /*
     public void enableSettingMenu()
     {
         mainMenu.SetActive(false);
@@ -46,13 +48,19 @@ public class settingsMenu : MonoBehaviour
             SettingsMenu.SetActive(false);
         }
     }
+    */
+
+    void Update()
+    {
+
+    }
 
     public void audioVolume(float _volume)
     {
         if (_volume < 0.0001f)
             _volume = 0.0001f;
 
-        float dB = Mathf.Log10(_volume) * 20f;
+        float dB = Mathf.Log10(GameManager.SFX) * 20f;
         masterMixer.SetFloat("masterVolume", dB);
         playSound(pop, sfx);
     }
@@ -62,10 +70,11 @@ public class settingsMenu : MonoBehaviour
         if (_volume < 0.0001f)
             _volume = 0.0001f;
 
-        float dB = Mathf.Log10(_volume) * 20f;
+        float dB = Mathf.Log10(GameManager.playerVoice) * 20f;
         playerMixer.SetFloat("masterVolume", dB);
         playSound(pop, playa);
     }
+
 
     public void backToMainMenuFromGame()
     {
@@ -92,4 +101,6 @@ public class settingsMenu : MonoBehaviour
             _source.PlayOneShot(_sound);
         }
     }
+
+
 }
