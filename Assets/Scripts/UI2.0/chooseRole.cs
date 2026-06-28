@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class chooseRole : NetworkBehaviour
 {
-    public readonly SyncVar<bool> IsReady = new SyncVar<bool>();
-    public readonly SyncVar<int> SelectedCharacter = new SyncVar<int>();
-
+    public emptyPlayerValues emptyPlayerValuesScript;
 
     public override void OnStartClient()
     {
@@ -15,7 +13,7 @@ public class chooseRole : NetworkBehaviour
 
         if (base.IsOwner)
         {
-            IsReady.Value = false;
+            //IsReady.Value = false;
         } 
     }
 
@@ -29,9 +27,10 @@ public class chooseRole : NetworkBehaviour
         choice(2);
     }
 
-    void choice(int _characterId)
+    public void choice(int _characterId)
     {
-        SelectedCharacter.Value = _characterId;
-        IsReady.Value = true;
+        emptyPlayerValuesScript.SelectedCharacter.Value = _characterId;
+        emptyPlayerValuesScript.IsReady.Value = true;
+        print(emptyPlayerValuesScript.SelectedCharacter.Value);
     }
 }

@@ -1426,6 +1426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 278739684}
   - component: {fileID: 278739685}
+  - component: {fileID: 278739686}
   m_Layer: 0
   m_Name: choise
   m_TagString: Untagged
@@ -1502,6 +1503,22 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0, z: 0, w: 0}
     Scale: {x: 0, y: 0, z: 0}
     IsValid: 0
+--- !u!114 &278739686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278739683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207c4dfc348486f40a74641339ce16c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 278739685}
+  _networkObjectCache: {fileID: 0}
+  emptyPlayerValuesScript: {fileID: 0}
 --- !u!1 &305113139
 GameObject:
   m_ObjectHideFlags: 0
@@ -7337,9 +7354,8 @@ GameObject:
   - component: {fileID: 1650492948}
   - component: {fileID: 1650492947}
   - component: {fileID: 1650492946}
-  - component: {fileID: 1650492945}
   m_Layer: 5
-  m_Name: HOST (1)
+  m_Name: MONSTER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7365,18 +7381,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1650492945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1650492943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 280cee4e55426954eb03ade96a361eee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1650492946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7421,9 +7425,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1650492945}
-        m_TargetAssemblyTypeName: HOST, Assembly-CSharp
-        m_MethodName: Host
+      - m_Target: {fileID: 278739686}
+        m_TargetAssemblyTypeName: chooseRole, Assembly-CSharp
+        m_MethodName: chooseMonster
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9492,9 +9496,8 @@ GameObject:
   - component: {fileID: 2109605078}
   - component: {fileID: 2109605077}
   - component: {fileID: 2109605076}
-  - component: {fileID: 2109605075}
   m_Layer: 5
-  m_Name: HOST (2)
+  m_Name: ASTRONAUT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9520,18 +9523,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -1.12}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2109605075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109605073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 280cee4e55426954eb03ade96a361eee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2109605076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9576,9 +9567,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2109605075}
-        m_TargetAssemblyTypeName: HOST, Assembly-CSharp
-        m_MethodName: Host
+      - m_Target: {fileID: 278739686}
+        m_TargetAssemblyTypeName: chooseRole, Assembly-CSharp
+        m_MethodName: chooseCosmonaut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
