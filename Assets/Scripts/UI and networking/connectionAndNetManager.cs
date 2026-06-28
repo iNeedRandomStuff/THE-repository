@@ -22,6 +22,12 @@ public class connectionAndNetManager : NetworkBehaviour
     [SerializeField] private GameObject player4;
     [SerializeField] private GameObject player5;
 
+
+    void Update()
+    {
+        showConnectedPlayers();
+    }
+
     public void connect()
     {
         GameManager.IP = ipInput.text;
@@ -38,7 +44,7 @@ public class connectionAndNetManager : NetworkBehaviour
     void showConnectedPlayers()
     {
         
-        print(GameManager.m_Players.Count);
+        print(ServerManager.Clients.Count);
         switch (ServerManager.Clients.Count)
         {
             case 1:

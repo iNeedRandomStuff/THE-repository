@@ -25,7 +25,7 @@ public class GameManager : NetworkBehaviour
     [SerializeField] private Transform pcSpawn;
 
     [Header ("settings")]
-    [SerializeField] private bool spawnPlayers;
+    public bool spawnPlayers;
 
     void Start()
     {
@@ -55,6 +55,7 @@ public class GameManager : NetworkBehaviour
 
             if (characterSelector.IsReady.Value == false)
                 return;
+            print("spawned");
         }
 
         SpawnPlayers();

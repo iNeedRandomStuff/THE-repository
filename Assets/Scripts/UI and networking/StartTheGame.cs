@@ -1,8 +1,10 @@
 using FishNet;
 using FishNet.Managing.Scened;
+using FishNet.Object;
+using FishNet.Connection;
 using UnityEngine;
 
-public class StartTheGame : MonoBehaviour
+public class StartTheGame : NetworkBehaviour
 {
     /*
     [Header ("prefabs")]
@@ -99,6 +101,9 @@ public class StartTheGame : MonoBehaviour
     }
     */
 
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private CharacterSelector CharacterSelector;
+
     void Awake()
     {
         if (!InstanceFinder.IsServerStarted)
@@ -109,7 +114,26 @@ public class StartTheGame : MonoBehaviour
 
     public void switchScene()
     {
+        foreach (NetworkConnection conn in ServerManager.Clients.Values)
+        {
+            if (conn.FirstObject == null)
+                return;
+
+            CharacterSelector characterSelector = conn.FirstObject.GetComponent<CharacterSelector>();
+
+            if (characterSelector.IsReady.Value == false)
+                return;
+        }
+
+        gameManager.spawnPlayers = true;
         SceneLoadData sld = new SceneLoadData("gameplay_scene");
         InstanceFinder.SceneManager.LoadGlobalScenes(sld);
+        UnladScene("main_menu_room");
+    }
+
+    void UnladScene(string sceneName)
+    {
+        SceneUnloadData sld = new SceneUnloadData(sceneName);
+        InstanceFinder.SceneManager.UnloadGlobalScenes(sld);
     }
 }
