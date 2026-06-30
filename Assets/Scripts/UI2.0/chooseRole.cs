@@ -32,5 +32,6 @@ public class chooseRole : NetworkBehaviour
         emptyPlayerValuesScript.SelectedCharacter.Value = _characterId;
         emptyPlayerValuesScript.IsReady.Value = true;
         print(emptyPlayerValuesScript.SelectedCharacter.Value);
+        gameObject.SetActive(false);
     }
 }
