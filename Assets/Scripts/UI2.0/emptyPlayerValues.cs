@@ -16,6 +16,4 @@ public class emptyPlayerValues : NetworkBehaviour
         chooseRoleScript = Object.FindAnyObjectByType<chooseRole>();
         chooseRoleScript.emptyPlayerValuesScript = gameObject.GetComponent<emptyPlayerValues>();
     }
-
-
 }

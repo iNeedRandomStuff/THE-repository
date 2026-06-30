@@ -85,7 +85,7 @@ public class PCmovement : NetworkBehaviour
             }
         }
         */
-        lookSpeed = GameManager.sensetivity;
+        //lookSpeed = GameManager.sensetivity;
 
         float horizontalAngleAbberation = turnAngle * Input.GetAxis("Horizontal");
         Quaternion _offsetRotation = Quaternion.Euler(0, horizontalAngleAbberation, 0);
