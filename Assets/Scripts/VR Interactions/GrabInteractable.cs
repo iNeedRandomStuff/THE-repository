@@ -27,7 +27,7 @@ public class GrabInteractable : NetworkBehaviour
     private Pistol pistol;
     private Flashlight flashlight;
     private Levers levers;
-    private ElevatorButton elevatorButton;
+    private hologramProjector HologramProjector;
 
     // game objects
     public GameObject InteractableObject;
@@ -76,10 +76,9 @@ public class GrabInteractable : NetworkBehaviour
                         }
                         else
                         {
-                            if (collider.TryGetComponent<ElevatorButton>(out ElevatorButton _elevatorsButton))
+                            if (collider.TryGetComponent<hologramProjector>(out hologramProjector _hologramProjector))
                             {
-                                elevatorButton = _elevatorsButton;
-                                InteractableObject = null;
+                                HologramProjector = _hologramProjector;
                             }
                         }
                     }
@@ -107,7 +106,7 @@ public class GrabInteractable : NetworkBehaviour
             {
                 InteractableObject.transform.position = AttachPoint.transform.position;
                 InteractableObject.transform.rotation = AttachPoint.transform.rotation;
-                InteractableObject.transform.SetParent(gameObject.transform);
+                //InteractableObject.transform.SetParent(gameObject.transform);
                 interactableScript.ownerName = gameObject.transform.name;
                 hasObjectInHand = true;
                 if(pistol != null)
@@ -127,7 +126,7 @@ public class GrabInteractable : NetworkBehaviour
             if(interactableStationary == true)
             {
                 levers = null;
-                elevatorButton = null;
+                HologramProjector = null;
                 interactableScript.ownerName = null;
                 Holster = null;
                 hasObjectInHand = false;
@@ -158,8 +157,8 @@ public class GrabInteractable : NetworkBehaviour
                 flashlight.Function();
             else if (levers != null)
                 levers.Function();
-            else if (elevatorButton != null)
-                elevatorButton.Function();
+            else if (HologramProjector != null)
+                HologramProjector.Function();
         }
     }
 }
