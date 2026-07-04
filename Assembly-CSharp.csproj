@@ -70,7 +70,12 @@
     <Compile Include="Assets\Scripts\UI and networking\LanConnector.cs" />
     <Compile Include="Assets\Scripts\IK movements\ScaleAndAllignment.cs" />
     <Compile Include="Assets\Scripts\PC\PCmovement.cs" />
+    <Compile Include="Assets\Scripts\UI2.0\emptyPlayerValues.cs" />
+    <Compile Include="Assets\Scripts\UI2.0\JOIN.cs" />
+    <Compile Include="Assets\Scripts\UI2.0\start the game.cs" />
+    <Compile Include="Assets\Scripts\UI2.0\HOST.cs" />
     <Compile Include="Assets\Scripts\UI and networking\StartTheGame.cs" />
+    <Compile Include="Assets\Scripts\UI and networking\UIbootsrap.cs" />
     <Compile Include="Assets\Scripts\IK movements\monsterTail.cs" />
     <Compile Include="Assets\Scripts\PC\PcVrCompatability.cs" />
     <Compile Include="Assets\Scripts\IK movements\LookWhereCameraLook.cs" />
@@ -79,6 +84,8 @@
     <Compile Include="Assets\Scripts\PC\MonsterHealth.cs" />
     <Compile Include="Assets\Scripts\VR Interactions\AllLeveresPushed.cs" />
     <Compile Include="Assets\other\FishNet\Upgrading\UpgradeFromMirrorMenu.cs" />
+    <Compile Include="Assets\Scripts\UI2.0\chooseRole.cs" />
+    <Compile Include="Assets\Scripts\UI and networking\connectionAndNetManager.cs" />
     <Compile Include="Assets\Scripts\VR Interactions\Levers.cs" />
     <Compile Include="Assets\Scripts\not mine\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\UI and networking\AllCosmonautsDead.cs" />
@@ -88,6 +95,7 @@
     <Compile Include="Assets\Scripts\UI and networking\settingsMenu.cs" />
     <Compile Include="Assets\Scripts\UI and networking\HostLobby.cs" />
     <Compile Include="Assets\other\FishNet\Upgrading\MirrorUpgrade.cs" />
+    <Compile Include="Assets\Scripts\UI and networking\GameManager.cs" />
     <Compile Include="Assets\other\FishNet\Upgrading\EdgegapMenu.cs" />
     <Compile Include="Assets\Scripts\UI and networking\PCUI.cs" />
     <Compile Include="Assets\Scripts\VR Interactions\Interactable.cs" />
@@ -98,7 +106,10 @@
     <Compile Include="Assets\Scripts\IK movements\IKFeetVR.cs" />
     <Compile Include="Assets\Scripts\PC\AstronautPcAgent.cs" />
     <Compile Include="Assets\Scripts\PC\PcDebugPanel.cs" />
+    <Compile Include="Assets\Scripts\UI2.0\clientCounter.cs" />
+    <Compile Include="Assets\Scripts\VR Interactions\hologramProjector.cs" />
     <Compile Include="Assets\Scripts\PC\Arrow.cs" />
+    <Compile Include="Assets\Scripts\UI2.0\customPlayerSpawner.cs" />
     <Compile Include="Assets\Scripts\UI and networking\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\VR Interactions\Pistol.cs" />
   </ItemGroup>
