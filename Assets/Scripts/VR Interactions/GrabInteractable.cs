@@ -20,14 +20,19 @@ public class GrabInteractable : NetworkBehaviour
     private bool hasObjectInHand;
     private bool interactableStationary;
     public bool autoGrab;
+
+    public bool grabPistol;
+    public bool grabFlashlight;
+    public bool grabHoloProject;
+
     public bool pcUse;
 
     // scripts
     private Interactable interactableScript;
-    private Pistol pistol;
-    private Flashlight flashlight;
+    public Pistol pistol;
+    public Flashlight flashlight;
     private Levers levers;
-    private hologramProjector HologramProjector;
+    public hologramProjector HologramProjector;
 
     // game objects
     public GameObject InteractableObject;
@@ -99,7 +104,6 @@ public class GrabInteractable : NetworkBehaviour
     {
         float gripValue = Grip.action.ReadValue<float>();
         var triggerAction = Trigger.action;
-        print(InteractableObject);
         if (gripValue > 0.1f || autoGrab == true)
         {
             if(InteractableObject != null)
@@ -126,7 +130,6 @@ public class GrabInteractable : NetworkBehaviour
             if(interactableStationary == true)
             {
                 levers = null;
-                HologramProjector = null;
                 interactableScript.ownerName = null;
                 Holster = null;
                 hasObjectInHand = false;
@@ -145,6 +148,7 @@ public class GrabInteractable : NetworkBehaviour
                 canGrab = false;
                 pistol = null;
                 flashlight = null;
+                HologramProjector = null;
                 hasObjectInHand = false;
             }
         }

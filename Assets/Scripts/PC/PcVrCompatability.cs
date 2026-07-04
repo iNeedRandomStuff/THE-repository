@@ -35,14 +35,18 @@ public class PcVrCompatability : NetworkBehaviour
     private bool hasObjectInHandR;
     private bool hasObjectInHandL;
 
-    private bool continueMovementR;
-    private bool continueMovementL;
+    private bool continueMovementPistol;
+    private bool continueMovementHologramProjector;
+    private bool continueMovementFlashlight;
     private bool initializedPC;
 
     private Vector3 hitPoint;
     [HideInInspector] public Vector3 sway;
 
     private Levers levers;
+
+    float frameWait;
+
 
     void Update()
     {
@@ -69,7 +73,7 @@ public class PcVrCompatability : NetworkBehaviour
         float _step = speed * Time.deltaTime;
 
         // pistol block
-        if (Input.GetKeyDown(KeyCode.Alpha1) || continueMovementR == true)
+        if (Input.GetKeyDown(KeyCode.Alpha1) || continueMovementPistol == true)
         {
             pullPistol(_step);
         }
@@ -80,13 +84,13 @@ public class PcVrCompatability : NetworkBehaviour
         }
 
         //hologram projector block
-        if (Input.GetKeyDown(KeyCode.Alpha3) || continueMovementR == true)
+        if (Input.GetKeyDown(KeyCode.Alpha3) || continueMovementHologramProjector == true)
         {
             pullHlogramProjcetor(_step);
         }
 
         // flashlight block
-        if (Input.GetKeyDown(KeyCode.Alpha2) || continueMovementL == true)
+        if (Input.GetKeyDown(KeyCode.Alpha2) || continueMovementFlashlight == true)
         {
             pullFlashlight(_step);
         }
@@ -108,59 +112,84 @@ public class PcVrCompatability : NetworkBehaviour
         {
             grabInteractableScriptLeft.pcUse = true;
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            grabInteractableScriptRight.autoGrab = false;
+        }
     }
 
     void pullPistol(float _step)
     {
         // drop object in hand > move hand to pistol holster > pick up pistol > move hand to aim position
+
         grabInteractableScriptRight.autoGrab = false;
-        continueMovementR = true;
+        continueMovementPistol = true;
         hasObjectInHandR = false;
-        if (grabInteractableScriptRight.InteractableObject == null)
+        if(frameWait > 0f)
         {
-            rightController.position = Vector3.MoveTowards(rightController.position, pistolHolster.position, _step);
+            if (grabInteractableScriptRight.InteractableObject == null)
+            {
+                rightController.position = Vector3.MoveTowards(rightController.position, pistolHolster.position, _step);
+            }
+            else
+            {
+                grabInteractableScriptRight.autoGrab = true;
+                rightController.position = Vector3.MoveTowards(rightController.position, defaultPistolPos.position, _step);
+                rightController.rotation = defaultPistolPos.rotation;
+                if (rightController.position == defaultPistolPos.position)
+                {
+                    continueMovementPistol = false;
+                    hasObjectInHandR = true;
+                    frameWait = 0f;
+                }
+            }
         }
         else
         {
-            grabInteractableScriptRight.autoGrab = true;
-            rightController.position = Vector3.MoveTowards(rightController.position, defaultPistolPos.position, _step);
-            rightController.rotation = defaultPistolPos.rotation;
-            if (rightController.position == defaultPistolPos.position)
-            {
-                continueMovementR = false;
-                hasObjectInHandR = true;
-            }
+            frameWait = 1f;
         }
     }
 
     void pullHlogramProjcetor(float _step)
     {
         // drop object in hand > move hand to pistol holster > pick up pistol > move hand to aim position
+
         grabInteractableScriptRight.autoGrab = false;
-        continueMovementR = true;
+        continueMovementHologramProjector = true;
         hasObjectInHandR = false;
-        if (grabInteractableScriptRight.InteractableObject == null)
+        if(frameWait > 0f)
         {
-            rightController.position = Vector3.MoveTowards(rightController.position, hologramProjectorHolster.position, _step);
+            if (grabInteractableScriptRight.InteractableObject == null)
+            {
+                rightController.position = Vector3.MoveTowards(rightController.position, hologramProjectorHolster.position, _step);
+            }
+            else
+            {
+                grabInteractableScriptRight.autoGrab = true;
+                rightController.position = Vector3.MoveTowards(rightController.position, defaultPistolPos.position, _step);
+                rightController.rotation = defaultPistolPos.rotation;
+                if (rightController.position == defaultPistolPos.position)
+                {
+                    continueMovementHologramProjector = false;
+                    hasObjectInHandR = true;
+                    frameWait = 0f;
+                }
+            }
         }
         else
         {
-            grabInteractableScriptRight.autoGrab = true;
-            rightController.position = Vector3.MoveTowards(rightController.position, defaultPistolPos.position, _step);
-            rightController.rotation = defaultPistolPos.rotation;
-            if (rightController.position == defaultPistolPos.position)
-            {
-                continueMovementR = false;
-                hasObjectInHandR = true;
-            }
+            frameWait = 1f;
         }
+
     }
 
     void pullFlashlight(float _step)
     {
         // drop object in hand > move hand to falshlight holster > pick up falshlight > move hand to aim position
+
         grabInteractableScriptLeft.autoGrab = false;
-        continueMovementL = true;
+        continueMovementFlashlight = true;
         hasObjectInHandL = false;
         if (grabInteractableScriptLeft.InteractableObject == null)
         {
@@ -173,7 +202,7 @@ public class PcVrCompatability : NetworkBehaviour
             leftController.rotation = defaultFlashlightlPos.rotation;
             if (leftController.position == defaultFlashlightlPos.position)
             {
-                continueMovementL = false;
+                continueMovementFlashlight = false;
                 hasObjectInHandL = true;
             }
         }

@@ -1868,7 +1868,7 @@ MonoBehaviour:
   defaultFlashlightlPos: {fileID: 1142599562332770809}
   grabInteractableScriptLeft: {fileID: 7951502564623105367}
   pistolHolster: {fileID: 9215286032475409927}
-  hologramProjectorHolster: {fileID: 0}
+  hologramProjectorHolster: {fileID: 3526226461607203555}
   flashlightHolster: {fileID: 6282570661339341335}
   speed: 10
   camera: {fileID: 7172629913884189698}
@@ -3859,6 +3859,37 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!1 &4091861831881382507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7740827656380937418}
+  m_Layer: 0
+  m_Name: pistolIntermid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7740827656380937418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4091861831881382507}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.062, y: 0.868, z: 0.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7944960987094185255}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4123896419486884659
 GameObject:
   m_ObjectHideFlags: 0
@@ -5312,14 +5343,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5809380836995262949}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.539, y: 0, z: 0.07}
+  m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.26, y: -0.001, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1377632766584466233}
   m_Father: {fileID: 7944960987094185255}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &3737651884993196224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5523,7 +5554,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.05
   m_Height: 0
   m_Direction: 1
   m_Center: {x: 0.03, y: 0, z: 0.07}
@@ -5568,7 +5599,13 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   autoGrab: 0
+  grabPistol: 0
+  grabFlashlight: 0
+  grabHoloProject: 0
   pcUse: 0
+  pistol: {fileID: 0}
+  flashlight: {fileID: 0}
+  HologramProjector: {fileID: 0}
   InteractableObject: {fileID: 0}
 --- !u!1 &6115059998944374769
 GameObject:
@@ -5791,6 +5828,7 @@ Transform:
   - {fileID: 9215286032475409927}
   - {fileID: 6282570661339341335}
   - {fileID: 3526226461607203555}
+  - {fileID: 7740827656380937418}
   m_Father: {fileID: 8856090508061609215}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2644622942329212585
@@ -8315,14 +8353,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8078331499284033703}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6532815, y: 0.27059788, z: -0.2705979, w: 0.6532817}
-  m_LocalPosition: {x: 0.188, y: 0, z: 0.108}
+  m_LocalRotation: {x: 0.70710677, y: -0.000000052154064, z: -0.0000000087077465, w: 0.7071069}
+  m_LocalPosition: {x: -0.008000009, y: 0.049000002, z: 0.169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8751917134376842633}
   m_Father: {fileID: 7944960987094185255}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -45}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1431540761180472866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8464,7 +8502,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.05
   m_Height: 0
   m_Direction: 1
   m_Center: {x: -0.03, y: 0, z: 0.07}
@@ -8509,7 +8547,13 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   autoGrab: 0
+  grabPistol: 0
+  grabFlashlight: 0
+  grabHoloProject: 0
   pcUse: 0
+  pistol: {fileID: 0}
+  flashlight: {fileID: 0}
+  HologramProjector: {fileID: 0}
   InteractableObject: {fileID: 0}
 --- !u!1 &8191194267709396549
 GameObject:
@@ -9143,7 +9187,7 @@ Transform:
   m_GameObject: {fileID: 8477586888699274736}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalPosition: {x: -0.349, y: -0.0009999499, z: -0.0009999997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
