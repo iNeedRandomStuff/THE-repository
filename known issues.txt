@@ -1,7 +1,8 @@
 Rest foot pos is incorrect in VR.
 on sudden change of direction lastSteppedFoot floats in the air until the other foot steps.
 hands jerk when walking
-player Volume is setting doesnt do anything
+no settigs eu
 pistol and flashlight sill stay holstered on the other players mashine even if they are not
-head of VR player stays in the air after death
+networking doesnt function properly (fishnet disables an object and doesnt reenable it)
 make PC players collider encompass the entire body and not only the head
+Ragdoll does crazy things (check collider)
