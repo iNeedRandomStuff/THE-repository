@@ -11,7 +11,7 @@ public class emptyPlayerValues : NetworkBehaviour
     [SerializeField] public readonly SyncVar<bool> IsReady = new SyncVar<bool>();
     [SerializeField] public readonly SyncVar<int> SelectedCharacter = new SyncVar<int>();
 
-    void Start()
+    private void Start()
     {
         chooseRoleScript = Object.FindAnyObjectByType<chooseRole>();
         chooseRoleScript.emptyPlayerValuesScript = gameObject.GetComponent<emptyPlayerValues>();

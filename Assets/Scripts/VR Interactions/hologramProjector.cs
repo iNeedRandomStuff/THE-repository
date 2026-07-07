@@ -8,6 +8,13 @@ public class hologramProjector : MonoBehaviour
 
     public void Function()
     {
-        UI.SetActive(true);
+        if(UI.active == false)
+        {
+            UI.SetActive(true);
+        }
+        else
+        {
+            UI.SetActive(false);
+        }
     }
 }
