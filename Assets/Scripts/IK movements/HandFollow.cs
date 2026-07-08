@@ -14,7 +14,7 @@ public class HandFollow : NetworkBehaviour
 
     public Quaternion offset;
     [HideInInspector]public float time;
-    [HideInInspector] public float timeToReset;
+    public float timeToReset;
 
     public override void OnStartClient()
     {
@@ -49,15 +49,6 @@ public class HandFollow : NetworkBehaviour
         rigidBody.velocity = (Controller.position - transform.position) / Time.fixedDeltaTime;
 
         Quaternion rotationDifference = Controller.rotation * offset * Quaternion.Inverse(transform.rotation);
-        if(offset != Quaternion.Euler(0, 0, 0))
-        {
-            time = time + 1f;
-            if(time >= timeToReset)
-            {
-                offset = Quaternion.Euler(0, 0, 0);
-                time = 0f;
-            }
-        }
         rotationDifference.ToAngleAxis(out float angleInDegree, out Vector3 rotationAxis);
 
         Vector3 rotationDifferenceInDegree = angleInDegree * rotationAxis;

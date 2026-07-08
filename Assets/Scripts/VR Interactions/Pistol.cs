@@ -70,7 +70,12 @@ public class Pistol : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        timesinceshot = timesinceshot + 1; 
+        handFollowScript.time = handFollowScript.time + 1; 
+        if (handFollowScript.time > 30)
+        {
+            timesshot = 0;
+            handFollowScript.offset = Quaternion.Euler(0,0,0);
+        }
     }
 
 
@@ -99,7 +104,7 @@ public class Pistol : NetworkBehaviour
             currentAmmoInMagDisplay3D.text = _ammoInMag;
             PlayGunshotServerRpc(Impact, hitPoint, hitNormal);
             Recoil(Hand);
-            timesinceshot = 0;
+            handFollowScript.time = 0;
         }
     }
 
@@ -112,7 +117,7 @@ public class Pistol : NetworkBehaviour
 
     void Recoil(GameObject _Hand)
     {
-        if (timesinceshot <= 60)
+        if (handFollowScript.time <= 60)
         {
             randomnessFactorX = Random.Range(0.8f, 1f);
             randomnessFactorY = Random.Range(0.8f, 1f);

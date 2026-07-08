@@ -8960,7 +8960,7 @@ MonoBehaviour:
   swayRange: 0.05
   offset: {x: 0, y: 0, z: 0, w: 1}
   time: 0
-  timeToReset: 0
+  timeToReset: 1
 --- !u!54 &6473565084981611190
 Rigidbody:
   m_ObjectHideFlags: 0
