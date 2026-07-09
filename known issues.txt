@@ -1,8 +1,11 @@
+[Undone]
 Rest foot pos is incorrect in VR.
 on sudden change of direction lastSteppedFoot floats in the air until the other foot steps.
 hands jerk when walking
-no settigs eu
+no settigs
 pistol and flashlight sill stay holstered on the other players mashine even if they are not
 networking doesnt function properly (fishnet disables an object and doesnt reenable it)
+
+[Requeres testing]
 make PC players collider encompass the entire body and not only the head
 Ragdoll does crazy things (check collider)
