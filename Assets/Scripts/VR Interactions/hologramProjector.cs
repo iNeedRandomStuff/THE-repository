@@ -8,13 +8,15 @@ public class hologramProjector : MonoBehaviour
 
     public void Function()
     {
-        if(UI.active == false)
-        {
-            UI.SetActive(true);
-        }
-        else
-        {
-            UI.SetActive(false);
-        }
+        UI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void turnOffUI()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        UI.SetActive(false);
     }
 }

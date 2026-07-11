@@ -8,6 +8,7 @@ public class PcVrCompatability : NetworkBehaviour
     [Header("right hand")]
     [SerializeField] private Transform rightController;
     [SerializeField] private Transform defaultPistolPos;
+    [SerializeField] private Transform defaultHologramProjectorPos;
     [SerializeField] private GrabInteractable grabInteractableScriptRight;
 
     [Header("left hand")]
@@ -167,9 +168,9 @@ public class PcVrCompatability : NetworkBehaviour
             else
             {
                 grabInteractableScriptRight.autoGrab = true;
-                rightController.position = Vector3.MoveTowards(rightController.position, defaultPistolPos.position, _step);
-                rightController.rotation = defaultPistolPos.rotation;
-                if (rightController.position == defaultPistolPos.position)
+                rightController.position = Vector3.MoveTowards(rightController.position, defaultHologramProjectorPos.position, _step);
+                rightController.rotation = defaultHologramProjectorPos.rotation;
+                if (rightController.position == defaultHologramProjectorPos.position)
                 {
                     continueMovementHologramProjector = false;
                     hasObjectInHandR = true;

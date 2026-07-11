@@ -9041,7 +9041,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 1645404570}
   _networkObjectCache: {fileID: 0}
   monster: {fileID: 5345297220820001284, guid: ae43561c9ada49c4e9c790cedb10cc24, type: 3}
-  astronaut: {fileID: 8768676478042887019, guid: 48809d1d344b66748bcf0e520340541b, type: 3}
+  astronaut: {fileID: 1215296654102695749, guid: 48809d1d344b66748bcf0e520340541b, type: 3}
   monsterSpawnPoint: {fileID: 393709348}
   astronautSpawnPoint: {fileID: 1831148530}
 --- !u!4 &1645404572

@@ -5,6 +5,7 @@ hands jerk when walking
 no settigs
 pistol and flashlight sill stay holstered on the other players mashine even if they are not
 networking doesnt function properly (fishnet disables an object and doesnt reenable it)
+sometimes the hands in PC mode start pointing at each other, more apparant when the hologram projector is pulled out (check raycast layer mask)
 
 [Requeres testing]
 make PC players collider encompass the entire body and not only the head
