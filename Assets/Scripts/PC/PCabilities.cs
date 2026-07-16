@@ -5,7 +5,7 @@ using FishNet.Object;
 
 public class PCabilities : NetworkBehaviour
 {
-    //for raycasting
+    [Header("raycast")]
     [SerializeField] private Camera camera;
     [SerializeField] private float range;
 
@@ -18,6 +18,7 @@ public class PCabilities : NetworkBehaviour
     private GameObject rightArm;
     private GameObject leftArm;
     private GameObject head;
+    [SerializeField] private Transform MosterMouth;
 
     [Header("abilityWaits")]
     [SerializeField] private float killCooldown;
@@ -71,28 +72,29 @@ public class PCabilities : NetworkBehaviour
                     head = scaleAndAllignment.Head;
                 }
                 canKill = false;
-                KillCosmonautServer(hit.transform.gameObject, leftArm, rightArm, head);
-                //KillCosmonautServer(hit.transform.gameObject);
+                //KillCosmonautServer(hit.transform.gameObject, leftArm, rightArm, head);
+                KillCosmonautServer(hit.transform.gameObject);
                 monsterHealth.ServerHealOnKill();
             }
         }
     }
 
     [ServerRpc]
-    void KillCosmonautServer(GameObject _cosmonaut, GameObject _leftArm, GameObject _rightArm, GameObject _Head)
-    //void KillCosmonautServer(GameObject _cosmonaut)
+    //void KillCosmonautServer(GameObject _cosmonaut, GameObject _leftArm, GameObject _rightArm, GameObject _Head)
+    void KillCosmonautServer(GameObject _cosmonaut)
     {
-        
+        /*
         NetworkObject.Despawn(_leftArm);
         NetworkObject.Despawn(_rightArm);
         NetworkObject.Despawn(_Head);
         NetworkObject.Despawn(_cosmonaut);
+        */
         
         source.PlayOneShot(Crack);
         currentStalkTimerState = 0;
         canKill = false;
 
-        //KillCosmonautObserver(_cosmonaut);
+        KillCosmonautObserver(_cosmonaut);
 
         //killCooldownFunction();
     }
@@ -103,7 +105,7 @@ public class PCabilities : NetworkBehaviour
         Animator animator = _cosmonaut.GetComponent<Animator>();
         animator.enabled = false;
         _cosmonaut.transform.SetParent(gameObject.transform);
-        _cosmonaut.transform.position = gameObject.transform.position;
+        _cosmonaut.transform.position = MosterMouth.transform.position;
     }
 
     IEnumerator killCooldownFunction()
