@@ -5,6 +5,7 @@ using FishNet;
 using FishNet.Connection;
 using FishNet.Object;
 using TMPro;
+using FishNet.Object.Synchronizing;
 
 public class clientCounter : NetworkBehaviour
 {
@@ -13,6 +14,9 @@ public class clientCounter : NetworkBehaviour
     [SerializeField] private int players;
     [SerializeField] private TMP_Text TMPtext;
 
+    [SerializeField] public readonly SyncVar<float> clientAmount = new SyncVar<float>();
+
+
     void Update()
     {
         counter();
@@ -20,7 +24,7 @@ public class clientCounter : NetworkBehaviour
 
     void counter()
     {
-        players = InstanceFinder.ServerManager.Clients.Count;
-        TMPtext.text = "" + players;
+        clientAmount.Value = InstanceFinder.ServerManager.Clients.Count;
+        TMPtext.text = "" + clientAmount.Value;
     }
 }

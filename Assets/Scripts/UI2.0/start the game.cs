@@ -15,9 +15,14 @@ public class startthegame : NetworkBehaviour
             gameObject.SetActive(false);
         }
     }
-
-
-
+    /*
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+        SceneLoadData sld = new SceneLoadData("main_menu_room");
+        InstanceFinder.SceneManager.LoadGlobalScenes(sld);
+    }
+    */
     public void StartTheGame()
     {
         foreach (NetworkConnection conn in ServerManager.Clients.Values)

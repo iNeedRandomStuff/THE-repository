@@ -27,7 +27,7 @@ public class emptyPlayerValues : NetworkBehaviour
 
             choiceObject = chooseRoleScript.thisObject;
             clientCounterObject = clientCounterScript.thisObject;
-            initializeUI(choiceObject, clientCounterObject);
+            //initializeUI(choiceObject, clientCounterObject);
         }
     }
 
