@@ -27,7 +27,8 @@ public class hologramProjector : MonoBehaviour
         if (continueMovementToReadyPos == true)
         {
             leftController.position = Vector3.MoveTowards(leftController.position, readyToCliclPos.position, step);
-            if(leftController.position == readyToCliclPos.position)
+            leftController.rotation = readyToCliclPos.rotation;
+            if (leftController.position == readyToCliclPos.position)
             {
                 continueMovementToReadyPos = false;
             }
@@ -46,6 +47,11 @@ public class hologramProjector : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha8))
         {
             clickBack();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            ClickDisconnect();
         }
     }
 
@@ -66,5 +72,11 @@ public class hologramProjector : MonoBehaviour
     {
         continueMovementToButton = true;
         buttonInQuestion = BackButton;
+    }
+    
+    void ClickDisconnect()
+    {
+        continueMovementToButton = true;
+        buttonInQuestion = Disconnect;
     }
 }

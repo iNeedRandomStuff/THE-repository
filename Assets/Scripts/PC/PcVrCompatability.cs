@@ -55,7 +55,7 @@ public class PcVrCompatability : NetworkBehaviour
 
         //raycast
         RaycastHit hit;
-        if (Physics.Raycast(camera.position, camera.forward, out hit, layer & ~ignoreLayer))
+        if (Physics.Raycast(camera.position, camera.forward, out hit, layer))
         {
             hitPoint = hit.point;
             if (Input.GetKeyDown(KeyCode.F) && hit.distance <= range)
