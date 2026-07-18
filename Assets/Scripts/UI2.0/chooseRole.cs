@@ -7,14 +7,16 @@ public class chooseRole : NetworkBehaviour
 {
     public emptyPlayerValues emptyPlayerValuesScript;
 
+    public GameObject thisObject;
+
     public override void OnStartClient()
     {
         base.OnStartClient();
 
         if (base.IsOwner)
         {
-            //IsReady.Value = false;
-        } 
+
+        }
     }
 
     public void chooseMonster()

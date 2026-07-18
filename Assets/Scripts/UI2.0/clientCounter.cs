@@ -8,6 +8,8 @@ using TMPro;
 
 public class clientCounter : NetworkBehaviour
 {
+    public GameObject thisObject;
+
     [SerializeField] private int players;
     [SerializeField] private TMP_Text TMPtext;
 

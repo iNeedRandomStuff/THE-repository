@@ -1519,6 +1519,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 278739685}
   _networkObjectCache: {fileID: 0}
   emptyPlayerValuesScript: {fileID: 0}
+  thisObject: {fileID: 278739683}
 --- !u!1 &305113139
 GameObject:
   m_ObjectHideFlags: 0
@@ -6876,6 +6877,7 @@ MonoBehaviour:
   _componentIndexCache: 255
   _addedNetworkObject: {fileID: 1483162900}
   _networkObjectCache: {fileID: 0}
+  thisObject: {fileID: 1483162895}
   players: 0
   TMPtext: {fileID: 1819294303}
 --- !u!114 &1483162898
